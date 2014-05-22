@@ -92,6 +92,7 @@ public:
   /**
    * \brief Constructor
    */
+  SimpleGrasps();
   SimpleGrasps(moveit_visual_tools::VisualToolsPtr rviz_tools);
 
   /**

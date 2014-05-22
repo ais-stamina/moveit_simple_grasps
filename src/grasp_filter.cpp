@@ -192,7 +192,7 @@ bool GraspFilter::filterGrasps(std::vector<moveit_msgs::Grasp>& possible_grasps,
 void GraspFilter::filterGraspThread(IkThreadStruct ik_thread_struct)
 {
   // Seed state - start at zero
-  std::vector<double> ik_seed_state(7); // fill with zeros
+  std::vector<double> ik_seed_state(6); // fill with zeros
   // TODO do not assume 7 dof
 
   std::vector<double> solution;

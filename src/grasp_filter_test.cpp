@@ -108,16 +108,14 @@ public:
   // Constructor
   GraspGeneratorTest(int num_tests) 
     : nh_("~"),
-      arm_("right"),
-      planning_group_name_(arm_+"_arm")
+      planning_group_name_("arm")
   {
-    nh_.param("arm", arm_, std::string("left"));
-    planning_group_name_ = arm_+"_arm";
-    ROS_INFO_STREAM_NAMED("temp","arm side is " << arm_);
+	std::string ee_name = "arm";
+    ROS_INFO_STREAM_NAMED("temp","arm is " << ee_name);
 
     // ---------------------------------------------------------------------------------------------
     // Load grasp data
-    if (!grasp_data_.loadRobotGraspData(nh_, arm_))
+    if (!grasp_data_.loadRobotGraspData(nh_, ee_name))
       ros::shutdown();
 
     // ---------------------------------------------------------------------------------------------

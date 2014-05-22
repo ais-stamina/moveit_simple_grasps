@@ -78,12 +78,10 @@ public:
   // Constructor
   GraspGeneratorTest(int num_tests)
     : nh_("~"),
-      arm_("right"),
-      planning_group_name_(arm_+"_arm")
+      arm_("arm")
   {
-    nh_.param("arm", arm_, std::string("left"));
-    planning_group_name_ = arm_+"_arm";
-    ROS_INFO_STREAM_NAMED("temp","arm side is " << arm_);
+    planning_group_name_ = "arm";
+    ROS_INFO_STREAM_NAMED("temp","arm is " << arm_);
 
     // ---------------------------------------------------------------------------------------------
     // Load grasp data specific to our robot

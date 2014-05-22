@@ -37,6 +37,11 @@
 namespace moveit_simple_grasps
 {
 
+SimpleGrasps::SimpleGrasps()
+{
+  ROS_DEBUG_STREAM_NAMED("grasps","Loaded simple grasp generator");
+}
+
 // Constructor
 SimpleGrasps::SimpleGrasps(moveit_visual_tools::VisualToolsPtr visual_tools) :
   visual_tools_(visual_tools)
@@ -55,9 +60,9 @@ bool SimpleGrasps::generateBlockGrasps(const geometry_msgs::Pose& object_pose, c
 {
   // ---------------------------------------------------------------------------------------------
   // Calculate grasps in two axis in both directions
-  generateAxisGrasps( object_pose, X_AXIS, DOWN, HALF, 0, grasp_data, possible_grasps); // got no grasps with this alone
-  generateAxisGrasps( object_pose, X_AXIS, UP,   HALF, 0, grasp_data, possible_grasps); // gives some grasps... looks ugly
-  generateAxisGrasps( object_pose, Y_AXIS, DOWN, HALF, 0, grasp_data, possible_grasps); // GOOD ONES!
+//  generateAxisGrasps( object_pose, X_AXIS, DOWN, HALF, 0, grasp_data, possible_grasps); // got no grasps with this alone
+//  generateAxisGrasps( object_pose, X_AXIS, UP,   HALF, 0, grasp_data, possible_grasps); // gives some grasps... looks ugly
+//  generateAxisGrasps( object_pose, Y_AXIS, DOWN, HALF, 0, grasp_data, possible_grasps); // GOOD ONES!
   generateAxisGrasps( object_pose, Y_AXIS, UP,   HALF, 0, grasp_data, possible_grasps); // gave a grasp from top... bad
 
   return true;
@@ -190,11 +195,11 @@ bool SimpleGrasps::generateAxisGrasps(
 
 
     // DEBUG - show original grasp pose before tranform to gripper frame
-    if( false )
-    {
-      tf::poseEigenToMsg(object_global_transform_ * grasp_pose, grasp_pose_msg.pose);
-      visual_tools_->publishArrow(grasp_pose_msg.pose, moveit_visual_tools::GREEN);
-    }
+//    if( !visual_tools_ )
+//    {
+//      tf::poseEigenToMsg(object_global_transform_ * grasp_pose, grasp_pose_msg.pose);
+//      visual_tools_->publishArrow(grasp_pose_msg.pose, moveit_visual_tools::GREEN);
+//    }
 
     // ------------------------------------------------------------------------
     // Optionally roll wrist with respect to object pose
