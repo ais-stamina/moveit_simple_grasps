@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(moveit_simple_grasps)
 
+set (CMAKE_MODULE_PATH /opt/ros/indigo/share/cmake_modules/cmake/Modules/ ${CMAKE_MODULE_PATH})
+
 find_package(Eigen REQUIRED)
 find_package(Boost REQUIRED thread system)
 
@@ -51,7 +53,8 @@ catkin_package(
     std_msgs
     message_runtime
     moveit_visual_tools
-  INCLUDE_DIRS include
+  INCLUDE_DIRS include  ${catkin_INCLUDE_DIRS}
+
 )
 
 ## Build 
